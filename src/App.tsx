@@ -3,11 +3,9 @@ import './App.css'
 function App() {
 
     return (
-        <>
-            <div className="App">
-                <h1>React + Vite</h1>
-            </div>
-        </>
+        <div className="App">
+            <h1>React + Vite</h1>
+        </div>
     )
 }
 
