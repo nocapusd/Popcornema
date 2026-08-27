@@ -1,9 +1,9 @@
 import axios, { type AxiosError } from "axios";
 import type {
-  Genre,
-  GenresResponse,
-  Movie,
-  TmdbListResponse,
+  IGenre,
+  IGenresResponse,
+  IMovie,
+  ITmdbListResponse,
 } from "./types.ts";
 
 export const tmdbClient = axios.create({
@@ -31,16 +31,16 @@ tmdbClient.interceptors.response.use(
   },
 );
 
-export const getGenres = async (): Promise<Genre[]> => {
-  const response = await tmdbClient.get<GenresResponse>("/genre/movie/list");
+export const getGenres = async (): Promise<IGenre[]> => {
+  const response = await tmdbClient.get<IGenresResponse>("/genre/movie/list");
   return response.data.genres;
 };
 
 export const getMovies = async (
   page: number = 1,
   genreId: number | null = null,
-): Promise<TmdbListResponse<Movie>> => {
-  const response = await tmdbClient.get<TmdbListResponse<Movie>>(
+): Promise<ITmdbListResponse<IMovie>> => {
+  const response = await tmdbClient.get<ITmdbListResponse<IMovie>>(
     "/discover/movie",
     {
       params: {
@@ -56,8 +56,8 @@ export const getMovies = async (
 export const searchMovies = async (
   query: string,
   page: number = 1,
-): Promise<TmdbListResponse<Movie>> => {
-  const response = await tmdbClient.get<TmdbListResponse<Movie>>(
+): Promise<ITmdbListResponse<IMovie>> => {
+  const response = await tmdbClient.get<ITmdbListResponse<IMovie>>(
     "/search/movie",
     {
       params: {

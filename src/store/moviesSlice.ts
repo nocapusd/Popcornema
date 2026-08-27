@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {Genre, Movie} from "../api/types";
+import type {IGenre, IMovie} from "../api/types";
 
-interface MoviesState {
-    movies: Movie[];
-    genres: Genre[];
+type MoviesStateType = {
+    movies: IMovie[];
+    genres: IGenre[];
     page: number;
     totalPages: number;
     selectedGenreId: number | null;
@@ -12,7 +12,7 @@ interface MoviesState {
     error: string | null;
 }
 
-const initialState: MoviesState = {
+const initialState: MoviesStateType = {
     movies: [],
     genres: [],
     page: 1,
@@ -24,7 +24,7 @@ const initialState: MoviesState = {
 };
 
 export const moviesSlice = createSlice({
-    name: "movies",
+    name: "moviesSlice",
     initialState,
     reducers: {
         setPage: (state, action) => {

@@ -1,4 +1,4 @@
-export interface Movie {
+export interface IMovie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -16,16 +16,16 @@ export interface Movie {
   vote_count: number;
 }
 
-export interface Genre {
+export interface IGenre {
   id: number;
   name: string;
 }
 
-export interface GenresResponse {
-  genres: Genre[];
+export interface IGenresResponse {
+  genres: IGenre[];
 }
 
-export interface TmdbListResponse<T> {
+export interface ITmdbListResponse<T> {
   page: number;
   results: T[];
   total_pages: number;
